@@ -57,12 +57,12 @@ int replaceBlank(char string[], int length)
                 char c = string[i];
                 if(isspace(c))
                 {
-                    q.push('%');
-                    q.push('2');
-                    q.push('0');
+                    q.emplace('%');
+                    q.emplace('2');
+                    q.emplace('0');
                 }
                 else
-                    q.push(c);
+                    q.emplace(c);
             }
         trueLength = q.size();
         
