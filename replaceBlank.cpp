@@ -42,6 +42,40 @@ int replaceBlank(char string[], int length)
 	return trueLength;
 }
 
+
+/*
+ * Implementation with std::queue
+    int replaceBlank(char string[], int length) 
+    {
+        // Write your code here
+    
+        std::queue <char> q;
+        int trueLength;
+        
+        for(int i=0; i<length; i++)
+            {
+                char c = string[i];
+                if(isspace(c))
+                {
+                    q.push('%');
+                    q.push('2');
+                    q.push('0');
+                }
+                else
+                    q.push(c);
+            }
+        trueLength = q.size();
+        
+            while(!q.empty())
+            {
+                std::cout<<q.front();
+                q.pop();
+            }
+        return trueLength;
+    }
+*/
+
+
 int main(int argc, char** argv[])
 {
 	char* s = "Mr John Smith";
