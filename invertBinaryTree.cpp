@@ -44,31 +44,62 @@ public:
 };
 
 /*
-* Second solution
+* The second solution
 * by using stack for doing recursive job
 */
-    void invertBinaryTree(TreeNode *root) 
-    {
-        // write your code here
-        stack<TreeNode*> T;
-        T.emplace(root);
-        while(!T.empty())
+        void invertBinaryTree(TreeNode *root)   
         {
-            //read top -- root-- and pop
-            TreeNode* node = T.top();
-            T.pop();
-            
-            TreeNode* temp;
-            
-            //swap subNodes
-            temp = node->left;
-            node->left = node->right;
-            node->right = temp;
-            
-            //use stack for recusive job
-            if(node->left != nullptr)
-                T.emplace(node->left);
-            if(node->right != nullptr)
-                T.emplace(node->right);
+            // write your code here
+            stack<TreeNode*> T;
+            T.emplace(root);
+            while(!T.empty())
+            {
+                //read top -- root-- and pop
+                TreeNode* node = T.top();
+                T.pop();
+                
+                TreeNode* temp;
+                
+                //swap subNodes
+                temp = node->left;
+                node->left = node->right;
+                node->right = temp;
+                
+                //use stack for recusive job
+                if(node->left != nullptr)
+                    T.emplace(node->left);
+                if(node->right != nullptr)
+                    T.emplace(node->right);
+            }
         }
-    }
+
+
+/*
+*The third solution
+*by using queue for doing recursive job
+*/
+        void invertBinaryTree(TreeNode *root) 
+        {
+            // write your code here
+        queue<TreeNode*> T;
+        T.emplace(root);
+        
+        while(!T.empty())
+            {
+                //read front -- root -- and dequeue
+                TreeNode* node = T.front();
+                T.pop();
+                
+                //swap the subNode
+                TreeNode* temp;
+                temp = node->left;
+                node->left = node->right;
+                node->right = temp;
+                
+                //do recursive job by using queue
+                if (node->left != nullptr)
+                    T.emplace(node->left);
+                if (node->right !=nullptr)
+                    T.emplace(node->right);
+            }
+        }
