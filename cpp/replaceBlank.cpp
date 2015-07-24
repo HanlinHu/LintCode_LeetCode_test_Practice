@@ -84,3 +84,57 @@ int main(int argc, char** argv[])
 	std::cout << trueLength << std::endl;
 	return 0;
 }
+
+
+
+// the O(n) algorithm
+class Solution {
+public:
+    /**
+     * @param string: An array of Char
+     * @param length: The true length of the string
+     * @return: The true length of new string
+     */
+    int replaceBlank(char string[], int length) 
+    {
+        // Write your code here
+        if((string == nullptr) && (length<=0))
+            return 0;
+    
+        int originalLength = 0;
+        int numberOfBank = 0;
+        int i =0;
+        while(string[i]!='\0')
+        {
+            ++originalLength;
+            if (string[i]==' ')
+                ++numberOfBank;
+            ++i;
+        }
+        
+        int newLength = originalLength + numberOfBank *2;
+        if (newLength < length)
+        return 0;
+        
+        int indexOfOriginal = originalLength;
+        int indexOfNew = newLength;
+        
+        while(indexOfOriginal >= 0 && indexOfNew > indexOfOriginal)
+        {
+            if(string[indexOfOriginal]==' ')
+            {
+                string[indexOfNew--] = '0';
+                string[indexOfNew--] = '2';
+                string[indexOfNew--] = '%';
+    
+            }
+            else
+            {
+                string[indexOfNew--] = string[indexOfOriginal];
+            }
+           --indexOfOriginal;     
+        }
+        return newLength;
+    }
+};  
+
