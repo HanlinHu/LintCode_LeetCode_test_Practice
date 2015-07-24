@@ -138,3 +138,42 @@ public:
     }
 };  
 
+//the O(n^2) algorithm
+class Solution {
+public:
+    /**
+     * @param string: An array of Char
+     * @param length: The true length of the string
+     * @return: The true length of new string
+     */
+    int replaceBlank(char string[], int length) 
+    {
+        // Write your code here
+    
+        std::queue <char> q;
+        int trueLength;
+        int count = 0;
+        
+        for(int i=0; i<length; i++)
+            {
+                char c = string[i];
+                if(isspace(c))
+                {
+                    q.emplace('%');
+                    q.emplace('2');
+                    q.emplace('0');
+                    ++count;
+                }
+                else
+                    q.emplace(c);
+            }
+        trueLength = q.size();
+        int begin = 0;
+            while(!q.empty())
+            {
+                string[begin++]=q.front();
+                q.pop();
+            }
+        return trueLength;
+    }
+}; 
