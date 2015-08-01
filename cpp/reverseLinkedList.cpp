@@ -38,6 +38,8 @@ public:
         {
             while(current != nullptr)
             {
+                // because we need current=current->next to move the cursor
+                // we divide this step into two steps, and in between we can interpolate new heads
                 temp = current->next;
                 current->next = newHead;
                 newHead = current;
