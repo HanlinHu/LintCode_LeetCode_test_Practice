@@ -33,15 +33,15 @@ public:
         
         ListNode *current(head);
         ListNode *newHead(nullptr);
-        ListNode *next(nullptr);
+        ListNode *temp(nullptr);
         if(head!=nullptr)
         {
             while(current != nullptr)
             {
-                next = current->next;
+                temp = current->next;
                 current->next = newHead;
                 newHead = current;
-                current = next;
+                current = temp;
             }
             return newHead;
         }
