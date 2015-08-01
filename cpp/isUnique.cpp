@@ -51,3 +51,26 @@ public:
 	   }
     }
 };
+
+
+// time complex O(n)
+
+bool isUnique(string &str) 
+{
+	//Reference:kamyu104/LintCode / C++ / unique - characters.cpp
+	if (str.length() > 256)
+		return false;
+	//the 8 bit extended ASCII Scheme allows for 256 symbols (2 to the power of 8).
+	//256 entries, const, default hash function
+	unordered_map<char, int> cnt;
+	// for each element in the string (auto as place holder and pass by reference)
+	for (auto &element: str) 
+	{
+		// hash value ++
+		// value  =  unordered_map[key];
+		++cnt[element];
+		if (cnt[element] > 1)
+			return false;
+	}
+	return true;
+}
