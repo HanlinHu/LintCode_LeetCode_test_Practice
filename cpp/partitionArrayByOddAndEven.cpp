@@ -62,7 +62,7 @@ public:
             while (left <= right && nums[left] % 2 == 1) { //because question asks for odd number first
                 ++left;
             } 
-            while (left <= right && nums[right] % 2 == 0) {
+            while (left <= right && nums[right] % 2 == 0) {// and the threshold is when left = right (in the middle)
                 --right;
             }
             if (left < right) {
