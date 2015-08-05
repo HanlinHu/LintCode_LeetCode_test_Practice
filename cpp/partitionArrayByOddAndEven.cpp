@@ -41,3 +41,36 @@ public:
                     }
     }
 };
+
+
+//time: O(n^2)
+class Solution {
+public:
+    /**
+     * @param nums: a vector of integers
+     * @return: nothing
+     */
+     
+     //the idea is from quicksort 
+     //two partitions move from two ends to middle |left| --> |pivot| <-- |right| 
+     //the pivot here is the middle of the array, so is the condition (left < right)
+    void partitionArray(vector<int> &nums) {
+        int left = 0;
+        int right = nums.size() - 1;
+
+        while (left < right) {
+            while (left <= right && nums[left] % 2 == 1) { //because question asks for odd number first
+                ++left;
+            } 
+            while (left <= right && nums[right] % 2 == 0) {
+                --right;
+            }
+            if (left < right) {
+               swap(nums[left], nums[right]);
+               ++left;
+               --right;
+               // or we can write within single line: swap(nums[left++], nums[right--])；
+            }
+        }
+    }
+};
