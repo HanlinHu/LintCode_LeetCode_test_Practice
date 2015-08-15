@@ -38,3 +38,28 @@ public:
        return m;     
     }
 };
+
+
+class Solution {
+public:
+    /**
+     * @param x: An integer
+     * @return: The sqrt of x
+     */
+    int sqrt(int x) {
+        int left = 1;
+        int right = x / 2;
+
+        // Find min of left s.t. left > x / left.
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (mid > x / mid) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+
+        return left - 1;
+    }
+};
