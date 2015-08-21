@@ -30,3 +30,25 @@ public:
         return nullptr;
     }
 };
+
+
+class Solution2 {
+public:
+    /**
+     * @param A: A sorted (increasing order) array
+     * @return: A tree node
+     */
+    TreeNode *sortedArrayToBST(vector<int> &A) {
+        return sortedArrayToBSTHelper(A, 0, A.size());
+    }
+
+    TreeNode *sortedArrayToBSTHelper(vector<int> &A, int start, int end) {
+        if (start < end) {
+            TreeNode *node = new TreeNode(A[start + (end - start) / 2]);
+            node->left = sortedArrayToBSTHelper(A, start, start + (end - start) / 2);
+            node->right = sortedArrayToBSTHelper(A, start + (end - start) / 2 + 1, end);
+            return node;
+        }
+        return nullptr;
+    }
+};
